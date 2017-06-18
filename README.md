@@ -11,5 +11,7 @@
   ```
  
  ## Output
-  A pdf file will be generated in the output_test folder with the results of the tests.
+  A pdf file will be generated in the output_test folder with the results of the tests.<br>
+  You need to create the folder <b>output_test<b>
+  
  
