@@ -41,12 +41,13 @@ public class CreatePdf {
     }
 
     protected static void addImageAndDetails(Document document, String image_url, String adTitle, String current_url, String img_size,
-                                             Boolean isVideo, String duration, String played) throws IOException, DocumentException {
+                                             Boolean isVideo, String duration, String srcVideo) throws IOException, DocumentException {
 
         Image image = null;
 
         try {
-            image = Image.getInstance(image_url);
+            image = Image.getInstance(new URL(image_url));
+            image.scaleAbsolute(476, 249);
         }
         catch (Exception e) {
             image = null;
@@ -66,10 +67,10 @@ public class CreatePdf {
         if (isVideo) {
             details.add(new Chunk( "Ad type: ", smallBold));
             details.add(new Chunk("VIDEO\n", small));
-            details.add(new Chunk("\tduration :\n", small));
-            details.add(new Chunk(duration+"\n", small));
-            details.add(new Chunk("\tplayed :\n", small));
-            details.add(new Chunk(played+"\n", small));
+            details.add(new Chunk("duration :", smallBold));
+            details.add(new Chunk(duration+" secondes\n", small));
+            details.add(new Chunk("source :", smallBold));
+            details.add(new Chunk(srcVideo+"\n", small));
 
 
         }
